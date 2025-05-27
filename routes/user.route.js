@@ -106,4 +106,5 @@ router.post('/authorization',verifyToken,(req,res)=>{
   res.status(200).json({message:"Valid Token"})
 })
 router.post('/reset-password/:token',userController.resetPassword)
+router.get('/find-total-cart',verifyToken,userController.getCartount)
 module.exports = router;

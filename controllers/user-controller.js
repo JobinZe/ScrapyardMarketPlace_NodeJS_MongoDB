@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const userSchemaModel = require('../models/user.model')
 const bcrypt = require('bcryptjs'); // You forgot to include bcrypt
+const cartSchema = require('../models/cart-model')
 exports.resetPassword = async(req,res)=>{
 const {token} = req.params;
 const {newPassword,confirmPassword} = req.body;
@@ -34,4 +35,16 @@ console.log(err)
   }
   return res.status(500).json({message:"Server Error"})
 }
+}
+exports.getCartount = async(req,res)=>{
+  try {
+    const userId = req.user.userId;
+    const findCart = await cartSchema.find({userId: userId});
+    const totalLength = findCart.length
+    return res.status(200).json({totalLength: totalLength})
+  }
+  catch (e) {
+    console.log(e,"error")
+  }
+
 }
