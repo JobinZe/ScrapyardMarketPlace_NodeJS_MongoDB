@@ -10,7 +10,8 @@ const cartSchema = new mongoose.Schema({
   userId:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
   productId:{type:Number,required:true},
   addedToCart:{type:Boolean,required:true},
-  cartPrimaryKey:{type:String}
+  cartPrimaryKey:{type:String},
+  imageName:{type:String,required:true},
 })
 cartSchema.plugin(AutoIncrement,{inc_field:'cartProductId'});
 const cart  = mongoose.model("Cart",cartSchema);
