@@ -5,6 +5,7 @@ const upload = require('../middlewares/upload-document');
 const Product = require('../models/product.model');
 const User = require('../models/user.model');
 const verifyToken = require('../middlewares/tokenverification');
+const counterOfferController = require('../controllers/counter-offer-controller')
 
 router.post('/add-categories',verifyToken,async(req,res)=>{
     try{
